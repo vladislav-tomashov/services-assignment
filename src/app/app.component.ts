@@ -8,19 +8,8 @@ import { UserService } from "./services/user.service";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  activeCounter = 0;
-  inactiveCounter = 0;
-
-  constructor(userService: UserService, counterService: CounterService) {
+  constructor(userService: UserService, public counterService: CounterService) {
     userService.addActiveUsers(["Max", "Anna"]);
     userService.addInactiveUsers(["Chris", "Manu"]);
-
-    counterService.activeCounterChange.subscribe((counter) => {
-      this.activeCounter = counter;
-    });
-
-    counterService.inactiveCounterChange.subscribe((counter) => {
-      this.inactiveCounter = counter;
-    });
   }
 }

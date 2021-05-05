@@ -7,17 +7,9 @@ import { UserService } from "../services/user.service";
   styleUrls: ["./active-users.component.css"],
 })
 export class ActiveUsersComponent {
-  users: string[];
-
-  constructor(private _userService: UserService) {
-    this._userService.userActiveChange.subscribe(() => {
-      this.users = this._userService.activeUsers;
-    });
-
-    this.users = this._userService.activeUsers;
-  }
+  constructor(public userService: UserService) {}
 
   onSetToInactive(user: string): void {
-    this._userService.setUserInactive(user);
+    this.userService.setUserInactive(user);
   }
 }
